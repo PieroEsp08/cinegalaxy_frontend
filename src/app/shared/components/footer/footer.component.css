@@ -1,0 +1,117 @@
+/* Estilo general del footer */
+.footer {
+  background-color: #6f42c1; /* lila */
+  color: white;
+  padding: 2rem 1rem;
+  font-family: Arial, sans-serif;
+}
+
+/* Contenedor de columnas */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Cada columna centrada */
+.footer-column {
+  flex: 1 1 200px; /* ancho mínimo de 200px y se expande */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra horizontalmente */
+  justify-content: center; /* centra verticalmente */
+  text-align: center;
+}
+
+/* Primera columna: logo + eslogan */
+.logo-column .logo-slogan {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* separación entre logo y eslogan */
+}
+
+.logo-column .logo-slogan img {
+  width: 150px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.logo-column .logo-slogan .slogan {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+}
+
+/* Segunda columna: enlaces de navegación */
+.nav-column h4,
+.social-column h4 {
+  margin-bottom: 0.5rem;
+}
+
+.footer-nav a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 0.3rem;
+  transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+  color: #dcd6f7; /* lila más claro al pasar el mouse */
+}
+
+/* Tercera columna: redes sociales */
+.social-icons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: white;
+  border-radius: 50%;
+  color: #6f42c1; /* color lila */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+  background-color: #dcd6f7;
+  color: #6f42c1;
+}
+
+.social-icons svg.icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Pie del footer */
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 1rem;
+}
+
+/* Responsive: apilar columnas en pantallas pequeñas */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-column {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .logo-column .logo-slogan {
+    justify-content: center;
+  }
+}
