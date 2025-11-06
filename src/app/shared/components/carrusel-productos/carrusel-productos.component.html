@@ -1,0 +1,33 @@
+<div id="carruselProductos" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+    <!-- Un grupo = un slide -->
+    <div *ngFor="let grupo of productosAgrupados; let i = index" 
+         class="carousel-item" 
+         [class.active]="i === 0">
+
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <!-- Tarjetas dentro del grupo -->
+        <div *ngFor="let producto of grupo" class="card producto-card">
+          <img [src]="producto.imagen" class="card-img-top" [alt]="producto.nombre">
+          <div class="card-body">
+            <h5 class="card-title">{{ producto.nombre }}</h5>
+            <div class="d-flex justify-content-between align-items-center">
+              <p class="fw-bold text-primary mb-0">S/ {{ producto.precio }}</p>
+              <button class="btn btn-dark btn-sm">Agregar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Controles -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carruselProductos" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carruselProductos" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>

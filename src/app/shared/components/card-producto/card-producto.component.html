@@ -1,0 +1,30 @@
+<div class="producto-card">
+  <!-- Imagen -->
+  <div class="imagen-container">
+    <img [src]="producto.imagen" [alt]="producto.nombre">
+  </div>
+
+  <!-- Contenedor de texto -->
+  <div class="info-texto">
+    <!-- Nombre -->
+    <div class="nombre-container">
+      <h3 class="nombre">{{ producto.nombre }}</h3>
+    </div>
+    <!-- Descripción -->
+    <div class="descripcion-container">
+      <p class="descripcion">{{ producto.descripcion }}</p>
+    </div>
+  </div>
+
+  <!-- Controles de cantidad y precio -->
+  <div class="control-row">
+    <div class="cantidad-control">
+      <button (click)="disminuirCantidad()">-</button>
+      <span class="cantidad">{{ cantidad }}</span>
+      <button (click)="aumentarCantidad()">+</button>
+    </div>
+    <div class="precio">
+      S/ {{ (producto.precio)}}
+    </div>
+  </div>
+</div>

@@ -1,5 +1,8 @@
 .navbar {
   background-color: #6f42c1 !important; /* color lila */
+  position: sticky; /* se queda pegada al hacer scroll */
+  top: 0; /* se queda en la parte superior */
+  z-index: 1050; /* por encima de otros elementos */
 }
 
 .navbar .nav-link,

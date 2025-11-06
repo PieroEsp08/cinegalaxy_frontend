@@ -1,0 +1,15 @@
+
+.navbar {
+  position: sticky;
+  top: 76px;           /* altura del navbar general para que quede justo debajo */
+  z-index: 1020;       /* menor que el navbar general */
+  background-color: #f8f9fa; /* color de fondo para que no se mezcle */
+}
+
+.navbar-nav .nav-link {
+  cursor: pointer;
+}
+
+h2 {
+  scroll-margin-top: 130px; /* Ajusta según la altura de tu navbar */
+}

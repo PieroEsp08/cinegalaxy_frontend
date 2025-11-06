@@ -1,0 +1,135 @@
+/* Card principal */
+.pelicula-card {
+  width: 100%;           /* que se adapte al ancho de la columna */
+  max-width: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #111;
+  color: #fff;
+  margin: 0 auto;        /* centrado si sobra espacio */
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.pelicula-card:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+/* Imagen */
+.imagen-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2/3; 
+  height: auto;
+  overflow: hidden;
+}
+
+.imagen-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s, filter 0.5s;
+}
+
+/* Zoom y oscurecer imagen al hover */
+.pelicula-card:hover .imagen-container img {
+  transform: scale(1.1);
+  filter: brightness(50%);
+}
+
+/* Badge de estreno */
+.badge-estreno {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #e50914;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  z-index: 5;
+}
+
+/* Contenido overlay */
+.contenido {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.pelicula-card:hover .contenido {
+  opacity: 1;
+}
+
+/* Título */
+.contenido h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Info de duración y género */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.8rem;
+}
+
+/* Botones overlay */
+.contenido .botones {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.contenido .botones button {
+  flex: 1;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* Botón Comprar */
+.contenido .botones .comprar {
+  background-color: #e50914;
+  color: white;
+}
+
+.contenido .botones .comprar:hover {
+  background-color: #ff1a2e;
+  transform: scale(1.05);
+}
+
+/* Botón Ver Detalles */
+.contenido .botones .detalles {
+  background-color: rgba(255,255,255,0.8);
+  color: #111;
+}
+
+.contenido .botones .detalles:hover {
+  background-color: rgba(255,255,255,1);
+  transform: scale(1.05);
+}
+
+.contenido .botones svg {
+  fill: currentColor;
+  width: 16px;
+  height: 16px;
+   margin-bottom: 2.5px; 
+}
+
+

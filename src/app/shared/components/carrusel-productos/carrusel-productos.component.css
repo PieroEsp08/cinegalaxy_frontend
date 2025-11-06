@@ -1,0 +1,66 @@
+.producto-card {
+  width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+}
+
+.producto-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.card-body .d-flex {
+  font-size: 14px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: left;  /* título a la izquierda */
+}
+
+/* Precio y botón en la misma fila */
+.card-body .d-flex {
+  font-size: 14px;
+}
+
+.card-body p {
+  margin: 0;
+}
+
+.btn-sm {
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+
+/* Para el contenedor del carousel */
+.carousel-inner {
+  padding: 20px 0;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* fondo semitransparente */
+    border-radius: 50%;                  /* opcional, redondo */
+    width: 40px;
+    height: 40px;
+}
+

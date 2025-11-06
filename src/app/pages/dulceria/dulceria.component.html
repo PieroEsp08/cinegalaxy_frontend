@@ -1,1 +1,23 @@
-<p>dulceria works!</p>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container">
+    <ul class="navbar-nav flex-row">
+      <li class="nav-item me-3" *ngFor="let categoria of categorias">
+        <a class="nav-link" (click)="scrollToCategoria(categoria.nombre)">
+          {{ categoria.nombre }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container my-4" *ngFor="let categoria of categorias">
+  <h2 id="{{categoria.nombre}}" class="mb-3">{{ categoria.nombre }}</h2>
+
+  <div class="row">
+    <div class="col-6 col-md-4 col-lg-3 mb-4"
+         *ngFor="let producto of productosPorCategoria[categoria.categoriaId]">
+      <app-card-producto [producto]="producto"></app-card-producto>
+    </div>
+  </div>
+</div>
