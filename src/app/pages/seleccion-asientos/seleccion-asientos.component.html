@@ -1,0 +1,117 @@
+<div *ngIf="funcion" class="asientos-bg">
+  <div class="page">
+
+    <!-- ── Breadcrumb ── -->
+    <nav class="breadcrumb-nav">
+      <span class="breadcrumb-item" (click)="volver()">{{ funcion.pelicula.titulo }}</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-item" (click)="volver()">Seleccionar Función</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-item breadcrumb-item--active">Seleccionar Asientos</span>
+    </nav>
+
+    <div class="layout">
+
+      <!-- ── Sidebar izquierda ── -->
+      <aside class="sidebar">
+        <div class="poster">
+          <img [src]="funcion.pelicula.imagen" [alt]="funcion.pelicula.titulo">
+        </div>
+        <div class="titulo-sidebar">{{ funcion.pelicula.titulo }}</div>
+        <div class="info-list">
+          <div class="info-item">
+            <span>📍</span>
+            <span class="info-item__valor">{{ funcion.sala.sede.nombre }}</span>
+          </div>
+          <div class="info-item">
+            <span>📅</span>
+            <span class="info-item__valor">{{ formatearFecha(funcion.fecha) }}</span>
+          </div>
+          <div class="info-item">
+            <span>🕐</span>
+            <span class="info-item__valor">{{ funcion.horaInicio | slice:0:5 }} — {{ funcion.horaFin | slice:0:5 }}</span>
+          </div>
+          <div class="info-item">
+            <span>🎭</span>
+            <span class="info-item__valor">{{ funcion.sala.nombre }}</span>
+          </div>
+          <div class="info-item">
+            <span>🎬</span>
+            <span class="info-item__valor">{{ funcion.sala.formato }} · {{ funcion.idioma }}</span>
+          </div>
+          <div class="info-item">
+            <span>💰</span>
+            <span class="info-item__valor">S/ {{ funcion.precioBase }} por entrada</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ── Columna derecha ── -->
+      <div class="main">
+
+        <div>
+          <div class="section-label">Mapa de asientos</div>
+          <div class="leyenda">
+            <div class="leyenda-item"><div class="asiento-demo asiento-demo--libre"></div><span>Libre</span></div>
+            <div class="leyenda-item"><div class="asiento-demo asiento-demo--sel"></div><span>Seleccionado</span></div>
+            <div class="leyenda-item"><div class="asiento-demo asiento-demo--ocupado"></div><span>Ocupado</span></div>
+          </div>
+        </div>
+
+        <div class="mapa-wrapper">
+          <div class="pantalla-container">
+            <div class="pantalla">Pantalla</div>
+          </div>
+
+          <!-- Mapa -->
+          <div class="mapa">
+            <div *ngFor="let fila of filas" class="fila">
+              <span class="fila-label">{{ fila }}</span>
+              <div class="fila-asientos">
+                <div
+                  *ngFor="let asiento of getAsientosDeFila(fila)"
+                  class="asiento"
+                  [class.asiento--sel]="isSeleccionado(asiento)"
+                  [class.asiento--ocupado]="asiento.estado === 0"
+                  (click)="toggleAsiento(asiento)">
+                  {{ asiento.numero }}
+                </div>
+              </div>
+              <span class="fila-label">{{ fila }}</span>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divisor">
+
+        <!-- Panel inferior -->
+        <div class="panel-inferior">
+          <div class="panel-izq">
+            <div class="sel-label">Asientos seleccionados</div>
+            <div class="asientos-badges">
+              <span *ngIf="asientosSeleccionados.length === 0" class="asiento-badge asiento-badge--empty">Ninguno aún</span>
+              <span *ngFor="let a of asientosSeleccionados" class="asiento-badge">{{ a.fila }}{{ a.numero }}</span>
+            </div>
+            <div class="max-aviso" *ngIf="asientosSeleccionados.length === MAX_ASIENTOS">
+              ⚠ Máximo de 10 asientos alcanzado
+            </div>
+          </div>
+          <div class="panel-der">
+            <div class="total-bloque">
+              <div class="total-label">Total estimado</div>
+              <div class="total-valor">S/ {{ getTotalPrecio().toFixed(2) }}</div>
+            </div>
+            <button
+              class="btn-continuar"
+              [class.activo]="asientosSeleccionados.length > 0"
+              [disabled]="asientosSeleccionados.length === 0"
+              (click)="continuar()">
+              ▶ Continuar
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

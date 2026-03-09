@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap');
+
+.funcion-bg {
+  min-height: 100vh;
+  background: #ffffff;
+  font-family: 'Crimson Pro', serif;
+  color: #111111;
+  padding-bottom: 6rem;
+}
+
+/* ── Breadcrumb ── */
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.breadcrumb-item {
+  color: #888888;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-item:hover { color: #b8922a; }
+.breadcrumb-item--active { color: #111111; cursor: default; }
+.breadcrumb-sep { color: rgba(0,0,0,0.2); }
+
+/* ── Mini poster ── */
+.mini-poster {
+  width: 80px;
+  height: 110px;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+.mini-poster img { object-fit: cover; }
+
+/* ── Título ── */
+.titulo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #111111;
+  margin: 0;
+}
+
+/* ── Section label ── */
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b8922a;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(184, 146, 42, 0.2), transparent);
+}
+
+/* ── Tags ── */
+.pd-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b8922a;
+  background: rgba(184, 146, 42, 0.08);
+  border: 1px solid rgba(184, 146, 42, 0.25);
+  padding: 0.3rem 0.85rem;
+  border-radius: 2px;
+}
+
+/* ── Divisor ── */
+.divisor {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
+  opacity: 1;
+}
+
+/* ── Fecha strip ── */
+.fecha-strip {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+}
+
+.fecha-strip::-webkit-scrollbar { display: none; }
+
+.fecha-card {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 3px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 72px;
+}
+
+.fecha-card:hover {
+  border-color: #b8922a;
+  background: rgba(184, 146, 42, 0.06);
+}
+
+.fecha-card--selected {
+  border-color: rgb(241, 44, 44) !important;
+  background: rgba(241, 44, 44, 0.04) !important;
+}
+
+.fecha-card__dia {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #888888;
+}
+
+.fecha-card__num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+  color: #111111;
+}
+
+.fecha-card--selected .fecha-card__num { color: rgb(241, 44, 44); }
+
+.fecha-card__mes {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888888;
+}
+
+/* ── Funciones grid ── */
+.funciones-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.funcion-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 150px;
+  text-align: center;
+}
+
+.funcion-card:hover {
+  border-color: #b8922a;
+  background: rgba(184, 146, 42, 0.06);
+}
+
+.funcion-card--selected {
+  border-color: rgb(241, 44, 44) !important;
+  background: rgba(241, 44, 44, 0.04) !important;
+}
+
+.funcion-card__hora {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+  color: #111111;
+}
+
+.funcion-card--selected .funcion-card__hora { color: rgb(241, 44, 44); }
+
+.funcion-card__fin {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888888;
+  margin-top: 0.15rem;
+}
+
+.funcion-card__sala {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888888;
+}
+
+.funcion-card__precio {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  color: #111111;
+  margin-top: 0.25rem;
+}
+
+.funcion-card--selected .funcion-card__precio { color: rgb(241, 44, 44); }
+
+/* ── Resumen bar ── */
+.resumen-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1e1e1e;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  z-index: 100;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease both;
+}
+
+.resumen-bar__titulo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.resumen-bar__detalle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.25rem;
+}
+
+.resumen-sep { color: rgba(255, 255, 255, 0.2); }
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ── Botones ── */
+.pd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.75rem;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.pd-btn--primary {
+  background: #d41e1e;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.pd-btn--primary:hover {
+  background: #c41a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(241, 44, 44, 0.3);
+}
+
+@media (max-width: 576px) {
+  .resumen-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+  .pd-btn--primary { width: 100%; justify-content: center; }
+}
+
+/* ── Sedes grid ── */
+.sedes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.sede-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 200px;
+}
+
+.sede-card:hover {
+  border-color: #b8922a;
+  background: rgba(184, 146, 42, 0.06);
+}
+
+.sede-card--selected {
+  border-color: rgb(241, 44, 44) !important;
+  background: rgba(241, 44, 44, 0.04) !important;
+}
+
+.sede-card__nombre {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  color: #111111;
+  line-height: 1;
+}
+
+.sede-card--selected .sede-card__nombre { color: rgb(241, 44, 44); }
+
+.sede-card__distrito {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b8922a;
+}
+
+.sede-card__direccion {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.9rem;
+  color: #888888;
+  font-style: italic;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

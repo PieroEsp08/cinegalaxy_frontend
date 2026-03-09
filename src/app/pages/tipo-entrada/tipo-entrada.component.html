@@ -1,0 +1,113 @@
+<div *ngIf="funcion" class="tipo-bg">
+  <div class="page">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav">
+      <span class="breadcrumb-item" (click)="volver()">{{ funcion.pelicula.titulo }}</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-item" (click)="volver()">Seleccionar Asientos</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-item breadcrumb-item--active">Tipo de Entrada</span>
+    </nav>
+
+    <div class="layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="poster">
+          <img [src]="funcion.pelicula.imagen" [alt]="funcion.pelicula.titulo">
+        </div>
+        <div class="titulo-sidebar">{{ funcion.pelicula.titulo }}</div>
+        <div class="info-list">
+          <div class="info-item"><span>📍</span><span class="info-item__valor">{{ funcion.sala.sede.nombre }}</span></div>
+          <div class="info-item"><span>📅</span><span class="info-item__valor">{{ formatearFecha(funcion.fecha) }}</span></div>
+          <div class="info-item"><span>🕐</span><span class="info-item__valor">{{ funcion.horaInicio | slice:0:5 }}</span></div>
+          <div class="info-item"><span>🎭</span><span class="info-item__valor">{{ funcion.sala.nombre }} · {{ funcion.sala.formato }}</span></div>
+          <div class="info-item"><span>💰</span><span class="info-item__valor">S/ {{ funcion.precioBase }} por entrada</span></div>
+        </div>
+
+        <hr class="divisor-sidebar">
+
+        <div class="mini-label">Asientos</div>
+        <div class="asientos-chips">
+          <span *ngFor="let a of asientos" class="asiento-chip">{{ a.fila }}{{ a.numero }}</span>
+        </div>
+
+        <hr class="divisor-sidebar">
+
+        <div class="mini-label">Total</div>
+        <div class="total-grande">S/ {{ getTotal().toFixed(2) }}</div>
+      </aside>
+
+      <!-- Main -->
+      <div class="main">
+        <div class="section-label">Selecciona el tipo de entrada</div>
+
+        <!-- Contador progreso -->
+        <div class="contador-info">
+          <div>
+            <div class="contador-sub">Entradas asignadas</div>
+            <div>
+              <span class="contador-num" [class.ok]="todosAsignados()">{{ getTotalAsignadas() }}</span>
+              <span class="contador-denom"> / {{ asientos.length }}</span>
+            </div>
+          </div>
+          <div class="contador-barra-wrap">
+            <div class="contador-barra" [style.width.%]="getProgresoPct()"></div>
+          </div>
+        </div>
+
+        <!-- Lista de tipos -->
+        <div class="tipos-lista">
+          <div
+            *ngFor="let item of tiposConCantidad"
+            class="tipo-row"
+            [class.activo]="item.cantidad > 0">
+
+            <div class="tipo-info">
+              <div class="tipo-nombre">{{ item.tipo.nombre }}</div>
+              <div class="tipo-descuento" *ngIf="item.tipo.descuentoPct > 0">{{ item.tipo.descuentoPct }}% descuento</div>
+              <div class="tipo-precio">S/ {{ item.precioUnitario.toFixed(2) }}</div>
+            </div>
+
+            <div class="tipo-controls">
+              <button class="ctrl-btn" [disabled]="item.cantidad === 0" (click)="disminuir(item)">−</button>
+              <div class="ctrl-count" [class.activo]="item.cantidad > 0">{{ item.cantidad }}</div>
+              <button class="ctrl-btn" [disabled]="todosAsignados()" (click)="aumentar(item)">+</button>
+            </div>
+
+            <div class="tipo-subtotal">
+              subtotal
+              <span>S/ {{ item.subtotal.toFixed(2) }}</span>
+            </div>
+
+          </div>
+        </div>
+
+        <hr class="divisor">
+
+        <!-- Panel inferior -->
+        <div class="panel-inferior">
+          <div class="panel-izq">
+            <div class="panel-label">Resumen</div>
+            <div class="panel-valor">{{ getResumen() }}</div>
+          </div>
+          <div class="panel-der">
+            <div class="total-bloque">
+              <div class="total-label">Total</div>
+              <div class="total-valor">S/ {{ getTotal().toFixed(2) }}</div>
+            </div>
+            <button
+              class="btn-continuar"
+              [class.activo]="todosAsignados()"
+              [disabled]="!todosAsignados()"
+              (click)="continuar()">
+              ▶ Continuar — Dulcería
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

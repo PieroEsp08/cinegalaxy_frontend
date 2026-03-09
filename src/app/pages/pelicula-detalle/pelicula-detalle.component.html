@@ -1,0 +1,83 @@
+<div *ngIf="pelicula" class="detalle-bg">
+  <div class="container py-5">
+    <div class="row g-0 align-items-stretch">
+
+      <!-- Poster -->
+      <div class="col-md-4 poster-container">
+        <img
+          [src]="pelicula.imagen"
+          [alt]="pelicula.titulo"
+          class="w-100 h-100">
+      </div>
+
+      <!-- Información -->
+      <div class="col-md-8 info-panel p-4 p-lg-5">
+
+        <!-- Badge estreno -->
+        <span *ngIf="pelicula.estadoEstreno === 1" class="badge-estreno d-inline-flex align-items-center gap-2 mb-3">
+          <span class="pulse-dot"></span>
+          En Estreno
+        </span>
+
+        <!-- Título -->
+        <h1 class="titulo mb-3">{{ pelicula.titulo }}</h1>
+
+        <!-- Tags -->
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <span class="pd-tag">🎬 {{ pelicula.genero }}</span>
+          <span class="pd-tag">⏱ {{ pelicula.duracion }} min</span>
+        </div>
+
+        <hr class="divisor">
+
+        <!-- Sinopsis -->
+        <p class="section-label">Sinopsis</p>
+        <p class="sinopsis">{{ pelicula.sinopsis }}</p>
+
+        <hr class="divisor">
+
+        <!-- Ficha técnica -->
+        <p class="section-label">Ficha técnica</p>
+        <div class="d-flex flex-wrap gap-4 mb-4">
+          <div class="pd-stat">
+            <div class="pd-stat__value">{{ pelicula.duracion }}<span> min</span></div>
+            <div class="pd-stat__label">Duración</div>
+          </div>
+          <div class="pd-stat">
+            <div class="pd-stat__value pd-stat__value--sm">{{ pelicula.genero }}</div>
+            <div class="pd-stat__label">Género</div>
+          </div>
+          <div class="pd-stat">
+            <div class="pd-stat__value">#<span>{{ pelicula.peliculaId }}</span></div>
+            <div class="pd-stat__label">ID</div>
+          </div>
+        </div>
+
+        <!-- Pills de estado -->
+        <div class="d-flex flex-wrap gap-3 mb-4">
+          <span [class]="pelicula.estadoEstreno === 1 ? 'pd-pill pd-pill--active' : 'pd-pill pd-pill--inactive'">
+            <span class="pd-pill__dot"></span>
+            {{ pelicula.estadoEstreno === 1 ? 'En Estreno' : 'Próximamente' }}
+          </span>
+          <span [class]="pelicula.estado === 1 ? 'pd-pill pd-pill--active' : 'pd-pill pd-pill--inactive'">
+            <span class="pd-pill__dot"></span>
+            {{ pelicula.estado === 1 ? 'Activa' : 'Inactiva' }}
+          </span>
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex flex-column flex-sm-row gap-3">
+          <button class="pd-btn pd-btn--primary" (click)="irASeleccionFuncion()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Comprar Entradas
+          </button>
+          <button class="pd-btn pd-btn--ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 10l4.553-2.277A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+            Ver Tráiler
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>    
+</div>

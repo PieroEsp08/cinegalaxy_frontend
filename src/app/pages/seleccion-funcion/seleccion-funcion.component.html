@@ -1,0 +1,105 @@
+<div *ngIf="pelicula" class="funcion-bg">
+  <div class="container py-5">
+
+    <!-- ── Breadcrumb ── -->
+    <nav class="breadcrumb-nav mb-4">
+      <span class="breadcrumb-item" (click)="volver()">{{ pelicula.titulo }}</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-item breadcrumb-item--active">Seleccionar Función</span>
+    </nav>
+
+    <!-- ── Header película ── -->
+    <div class="row align-items-center g-4 mb-5">
+      <div class="col-auto">
+        <div class="mini-poster">
+          <img [src]="pelicula.imagen" [alt]="pelicula.titulo" class="w-100 h-100">
+        </div>
+      </div>
+      <div class="col">
+        <p class="section-label">Seleccionando función para</p>
+        <h1 class="titulo">{{ pelicula.titulo }}</h1>
+        <div class="d-flex flex-wrap gap-2 mt-2">
+          <span class="pd-tag">🎬 {{ pelicula.genero }}</span>
+          <span class="pd-tag">⏱ {{ pelicula.duracion }} min</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divisor mb-5">
+
+    <!-- ── Paso 1: Sede ── -->
+    <div class="mb-5">
+      <p class="section-label">Paso 01 — Elige tu sede</p>
+      <div class="sedes-grid">
+        <div
+          *ngFor="let sede of sedes"
+          class="sede-card"
+          [class.sede-card--selected]="sedeSeleccionada?.sedeId === sede.sedeId"
+          (click)="seleccionarSede(sede)">
+          <div class="sede-card__nombre">{{ sede.nombre }}</div>
+          <div class="sede-card__distrito">📍 {{ sede.distrito }}</div>
+          <div class="sede-card__direccion">{{ sede.direccion }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Paso 2: Fecha ── -->
+    <div class="mb-5" *ngIf="sedeSeleccionada">
+      <p class="section-label">Paso 02 — Elige tu fecha</p>
+      <div class="fecha-strip">
+        <button
+          *ngFor="let fecha of fechasDisponibles"
+          class="fecha-card"
+          [class.fecha-card--selected]="fechaSeleccionada === fecha"
+          (click)="seleccionarFecha(fecha)">
+          <span class="fecha-card__dia">{{ formatearFecha(fecha).split(' ')[0] }}</span>
+          <span class="fecha-card__num">{{ formatearFecha(fecha).split(' ')[1] }}</span>
+          <span class="fecha-card__mes">{{ formatearFecha(fecha).split(' ')[2] }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Paso 3: Horario ── -->
+    <div class="mb-5" *ngIf="fechaSeleccionada">
+      <p class="section-label">Paso 03 — Elige tu horario</p>
+      <div class="funciones-grid">
+        <div
+          *ngFor="let funcion of funcionesFiltradas"
+          class="funcion-card"
+          [class.funcion-card--selected]="funcionSeleccionada?.funcionId === funcion.funcionId"
+          (click)="seleccionarFuncion(funcion)">
+          <div class="funcion-card__hora">{{ formatearHora(funcion.horaInicio) }}</div>
+          <div class="funcion-card__fin">hasta {{ formatearHora(funcion.horaFin) }}</div>
+          <hr class="divisor my-2">
+          <div class="d-flex flex-wrap gap-1 justify-content-center">
+            <span class="pd-tag">{{ funcion.sala.formato }}</span>
+            <span class="pd-tag">{{ funcion.idioma }}</span>
+          </div>
+          <div class="funcion-card__sala mt-2">{{ funcion.sala.nombre }}</div>
+          <div class="funcion-card__precio">S/ {{ funcion.precioBase }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Resumen + CTA ── -->
+    <div class="resumen-bar" *ngIf="funcionSeleccionada">
+      <div class="resumen-bar__info">
+        <div class="resumen-bar__titulo">{{ pelicula.titulo }}</div>
+        <div class="resumen-bar__detalle">
+          <span>📍 {{ sedeSeleccionada.nombre }}</span>
+          <span class="resumen-sep">·</span>
+          <span>📅 {{ formatearFecha(funcionSeleccionada.fecha) }}</span>
+          <span class="resumen-sep">·</span>
+          <span>🕐 {{ formatearHora(funcionSeleccionada.horaInicio) }}</span>
+          <span class="resumen-sep">·</span>
+          <span>{{ funcionSeleccionada.sala.formato }}</span>
+        </div>
+      </div>
+      <button class="pd-btn pd-btn--primary" (click)="irASeleccionAsientos()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Continuar — Elegir Asientos
+      </button>
+    </div>
+
+  </div>
+</div>

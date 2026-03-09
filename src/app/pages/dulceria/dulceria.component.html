@@ -1,23 +1,126 @@
+<div class="dulceria-bg">
+  <div class="page">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-  <div class="container">
-    <ul class="navbar-nav flex-row">
-      <li class="nav-item me-3" *ngFor="let categoria of categorias">
-        <a class="nav-link" (click)="scrollToCategoria(categoria.nombre)">
-          {{ categoria.nombre }}
-        </a>
-      </li>
-    </ul>
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav">
+      <span class="breadcrumb-item" (click)="volver()">{{ funcion?.pelicula?.titulo }}</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-item" (click)="volver()">Tipo de Entrada</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-item breadcrumb-item--active">Dulcería</span>
+    </nav>
+
+    <!-- Nav categorías -->
+    <div class="cat-nav">
+      <button
+        *ngFor="let cat of categorias"
+        class="cat-btn"
+        (click)="scrollToCategoria(cat.categoriaId)">
+        {{ cat.nombre }}
+      </button>
+    </div>
+
+    <!-- Secciones -->
+    <div class="secciones">
+      <div
+        *ngFor="let cat of categorias"
+        class="categoria-section"
+        [id]="'sec-' + cat.categoriaId">
+
+        <div class="section-label">{{ cat.nombre }}</div>
+
+        <div class="productos-grid">
+          <div
+            *ngFor="let prod of productosPorCategoria[cat.categoriaId]"
+            class="prod-card"
+            [class.en-carrito]="getCantidad(prod.productoId) > 0">
+
+            <div class="prod-img">
+              <img [src]="prod.imagen" [alt]="prod.nombre">
+            </div>
+
+            <div class="prod-badge" [class.visible]="getCantidad(prod.productoId) > 0">
+              {{ getCantidad(prod.productoId) }}
+            </div>
+
+            <div class="prod-body">
+              <div class="prod-nombre">{{ prod.nombre }}</div>
+              <div class="prod-desc">{{ prod.descripcion }}</div>
+              <div class="prod-footer">
+                <div class="prod-precio">S/ {{ prod.precio.toFixed(2) }}</div>
+                <button class="prod-add" (click)="agregarProducto(prod)">+</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
-</nav>
+</div>
 
-<div class="container my-4" *ngFor="let categoria of categorias">
-  <h2 id="{{categoria.nombre}}" class="mb-3">{{ categoria.nombre }}</h2>
+<!-- FAB siempre visible -->
+<div class="omitir-wrap">
+  <button class="fab" (click)="abrirPanel()">
+    <div class="fab-badge">{{ getTotalItems() }}</div>
+    <span class="fab-label">Ver pedido</span>
+    <span class="fab-total">S/ {{ getTotalGeneral().toFixed(2) }}</span>
+  </button>
+</div>
 
-  <div class="row">
-    <div class="col-6 col-md-4 col-lg-3 mb-4"
-         *ngFor="let producto of productosPorCategoria[categoria.categoriaId]">
-      <app-card-producto [producto]="producto"></app-card-producto>
+<!-- Overlay -->
+<div class="overlay" [class.visible]="panelAbierto" (click)="cerrarPanel()"></div>
+
+<!-- Offcanvas -->
+<div class="dulce-panel" [class.panel-abierto]="panelAbierto">
+
+  <div class="dulce-panel-header">
+    <div>
+      <div class="dulce-panel-titulo">Tu Pedido</div>
+      <div class="dulce-panel-sub">Dulcería CineGalaxy</div>
+    </div>
+    <button class="dulce-panel-close" (click)="cerrarPanel()">✕</button>
+  </div>
+
+  <div class="dulce-panel-resumen">
+    <div class="resumen-fila"><span>Función</span><span>{{ funcion?.pelicula?.titulo }} · {{ funcion?.horaInicio | slice:0:5 }}</span></div>
+    <div class="resumen-fila"><span>Asientos</span><span>{{ asientos.length }} asiento(s)</span></div>
+    <div class="resumen-fila"><span>Subtotal entradas</span><span>S/ {{ totalEntradas.toFixed(2) }}</span></div>
+  </div>
+
+  <div class="dulce-panel-body">
+    <div class="carrito-vacio" *ngIf="carrito.length === 0">
+      <div class="carrito-vacio-icon">🍿</div>
+      <div class="carrito-vacio-txt">Sin productos aún</div>
+    </div>
+
+    <div class="carrito-items" *ngIf="carrito.length > 0">
+      <div *ngFor="let item of carrito" class="carrito-item">
+        <div class="carrito-item-img">
+          <img [src]="item.producto.imagen" [alt]="item.producto.nombre">
+        </div>
+        <div class="carrito-item-info">
+          <div class="carrito-item-nombre">{{ item.producto.nombre }}</div>
+          <div class="carrito-item-precio">S/ {{ (item.producto.precio * item.cantidad).toFixed(2) }}</div>
+        </div>
+        <div class="carrito-item-ctrl">
+          <button class="carrito-ctrl-btn" (click)="quitarProducto(item.producto.productoId)">−</button>
+          <div class="carrito-item-cant">{{ item.cantidad }}</div>
+          <button class="carrito-ctrl-btn" (click)="agregarProducto(item.producto)">+</button>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="dulce-panel-footer">
+    <div class="totales">
+      <div class="total-fila"><span>Entradas</span><span>S/ {{ totalEntradas.toFixed(2) }}</span></div>
+      <div class="total-fila"><span>Dulcería</span><span>S/ {{ getTotalDulceria().toFixed(2) }}</span></div>
+      <div class="total-fila total-fila--grande"><span>Total</span><span>S/ {{ getTotalGeneral().toFixed(2) }}</span></div>
+    </div>
+    <button class="btn-continuar" (click)="continuar()">▶ Continuar Compra</button>
+  </div>
+
 </div>

@@ -1,0 +1,22 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Sede } from '../../models/sede/sede.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SedeService {
+
+  private apiUrl = 'http://localhost:8080/api/sedes';
+
+  constructor(private http: HttpClient) { }
+
+  getSedes(): Observable<Sede[]> {
+    return this.http.get<Sede[]>(this.apiUrl);
+  }
+
+  getSedeById(id: number): Observable<Sede> {
+    return this.http.get<Sede>(`${this.apiUrl}/${id}`);
+  }
+}

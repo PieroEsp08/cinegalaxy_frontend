@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap');
+
+.tipo-bg { min-height: 100vh; background: #fff; font-family: 'Crimson Pro', serif; color: #111; }
+.page { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+.breadcrumb-nav { display: flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2rem; }
+.breadcrumb-item { color: #888; cursor: pointer; transition: color 0.2s ease; }
+.breadcrumb-item:hover { color: #b8922a; }
+.breadcrumb-item--active { color: #111; cursor: default; }
+.breadcrumb-sep { color: rgba(0,0,0,0.2); }
+
+.layout { display: grid; grid-template-columns: 280px 1fr; gap: 3rem; align-items: start; }
+
+.sidebar { position: sticky; top: 2rem; }
+.poster { width: 100%; aspect-ratio: 2/3; border-radius: 4px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.15); margin-bottom: 1.5rem; }
+.poster img { width: 100%; height: 100%; object-fit: cover; }
+.titulo-sidebar { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; line-height: 1; color: #111; margin-bottom: 1.25rem; }
+.info-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.info-item { display: flex; align-items: flex-start; gap: 0.6rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: #888; }
+.info-item__valor { color: #111; }
+.divisor-sidebar { border: none; height: 1px; background: rgba(0,0,0,0.08); margin: 1.25rem 0; }
+.mini-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #b8922a; margin-bottom: 0.5rem; }
+.asientos-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.asiento-chip { font-family: 'DM Mono', monospace; font-size: 0.6rem; background: #f5f5f5; border: 1px solid rgba(0,0,0,0.1); color: #888; padding: 0.2rem 0.5rem; border-radius: 2px; }
+.total-grande { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: #111; line-height: 1; }
+
+.main { display: flex; flex-direction: column; gap: 2rem; }
+.section-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: #b8922a; display: flex; align-items: center; gap: 0.75rem; }
+.section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, rgba(184,146,42,0.2), transparent); }
+
+.contador-info { display: flex; align-items: center; gap: 1.5rem; }
+.contador-sub { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.1rem; }
+.contador-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: #888; line-height: 1; transition: color 0.2s ease; }
+.contador-num.ok { color: rgb(241,44,44); }
+.contador-denom { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #888; }
+.contador-barra-wrap { flex: 1; height: 4px; background: rgba(0,0,0,0.08); border-radius: 2px; overflow: hidden; }
+.contador-barra { height: 100%; background: rgb(241,44,44); border-radius: 2px; transition: width 0.3s ease; }
+
+.tipos-lista { display: flex; flex-direction: column; gap: 0.75rem; }
+.tipo-row { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 1.5rem; border: 1px solid rgba(0,0,0,0.08); border-radius: 3px; transition: all 0.2s ease; }
+.tipo-row.activo { border-color: rgba(241,44,44,0.3); background: rgba(241,44,44,0.02); }
+.tipo-info { display: flex; flex-direction: column; gap: 0.2rem; min-width: 200px; }
+.tipo-nombre { font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: #111; }
+.tipo-descuento { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: #b8922a; }
+.tipo-precio { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: #111; line-height: 1; }
+.tipo-controls { display: flex; align-items: center; gap: 1rem; align-self: center; }
+.ctrl-btn { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.15); background: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; transition: all 0.2s ease; color: #111; line-height: 1; }
+.ctrl-btn:hover:not(:disabled) { border-color: rgb(241,44,44); color: rgb(241,44,44); }
+.ctrl-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.ctrl-count { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: #888; min-width: 28px; text-align: center; line-height: 1; transition: color 0.2s ease; }
+.ctrl-count.activo { color: rgb(241,44,44); }
+.tipo-subtotal { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; color: #888; min-width: 90px; text-align: right; }
+.tipo-subtotal span { display: block; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: #111; }
+
+.divisor { border: none; height: 1px; background: linear-gradient(to right, rgba(0,0,0,0.1), transparent); }
+
+.panel-inferior { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+.panel-izq { display: flex; flex-direction: column; gap: 0.3rem; }
+.panel-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #888; }
+.panel-valor { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: #111; }
+.panel-der { display: flex; align-items: center; gap: 2rem; flex-shrink: 0; }
+.total-bloque { text-align: right; }
+.total-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: #888; }
+.total-valor { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: #111; line-height: 1; }
+.btn-continuar { display: inline-flex; align-items: center; gap: 0.6rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.9rem 1.75rem; border-radius: 3px; border: none; cursor: pointer; transition: all 0.2s ease; background: rgb(241,44,44); color: #fff; font-weight: 600; opacity: 0.35; pointer-events: none; white-space: nowrap; }
+.btn-continuar.activo { opacity: 1; pointer-events: all; }
+.btn-continuar.activo:hover { background: #c41a1a; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(241,44,44,0.3); }

@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap');
+
+/* ── Fondo ── */
+.detalle-bg {
+  min-height: 100vh;
+  background: #ffffff;
+  font-family: 'Crimson Pro', serif;
+  color: #111111;
+}
+
+/* ── Poster ── */
+.poster-container {
+  min-height: 480px;
+  overflow: hidden;
+}
+
+.poster-container img {
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Panel info ── */
+.info-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ── Badge estreno ── */
+.badge-estreno {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b8922a;
+  border: 1px solid #b8922a;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2px;
+}
+
+.pulse-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #b8922a;
+  border-radius: 50%;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.6); }
+}
+
+/* ── Título ── */
+.titulo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #111111;
+}
+
+/* ── Tags ── */
+.pd-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b8922a;
+  background: rgba(184, 146, 42, 0.08);
+  border: 1px solid rgba(184, 146, 42, 0.25);
+  padding: 0.3rem 0.85rem;
+  border-radius: 2px;
+}
+
+/* ── Divisor ── */
+.divisor {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
+  opacity: 1;
+}
+
+/* ── Section label ── */
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b8922a;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(184, 146, 42, 0.2), transparent);
+}
+
+/* ── Sinopsis ── */
+.sinopsis {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: #555555;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* ── Stats ── */
+.pd-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.pd-stat__value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.03em;
+  color: #111111;
+  line-height: 1;
+}
+
+.pd-stat__value span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  color: #888888;
+}
+
+.pd-stat__value--sm {
+  font-size: 1.4rem;
+}
+
+.pd-stat__label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #888888;
+}
+
+/* ── Pills ── */
+.pd-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 99px;
+}
+
+.pd-pill--active {
+  background: rgba(22, 163, 74, 0.08);
+  color: #16a34a;
+  border: 1px solid rgba(22, 163, 74, 0.25);
+}
+
+.pd-pill--inactive {
+  background: rgba(220, 38, 38, 0.08);
+  color: #dc2626;
+  border: 1px solid rgba(220, 38, 38, 0.25);
+}
+
+.pd-pill__dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ── Botones ── */
+.pd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.75rem;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pd-btn--primary {
+  background: rgb(241, 44, 44);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.pd-btn--primary:hover {
+  background: #c41a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(241, 44, 44, 0.3);
+}
+
+.pd-btn--ghost {
+  background: transparent;
+  color: #111111;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.pd-btn--ghost:hover {
+  border-color: #b8922a;
+  color: #b8922a;
+  background: rgba(184, 146, 42, 0.06);
+}
