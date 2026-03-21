@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap');
+
+.login-bg { min-height: 100vh; background: #f7f7f5; font-family: 'Crimson Pro', serif; color: #111; }
+
+/* Breadcrumb */
+.breadcrumb-nav { padding: 1.25rem 2rem; display: flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid rgba(0,0,0,0.06); background: #fff; }
+.breadcrumb-item { color: #888; cursor: pointer; transition: color 0.2s; }
+.breadcrumb-item:hover { color: #b8922a; }
+.breadcrumb-item--active { color: #111; cursor: default; }
+.breadcrumb-sep { color: rgba(0,0,0,0.2); }
+
+/* Page */
+.page { max-width: 480px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+
+/* Vista */
+.vista { animation: fadeIn 0.25s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Card */
+.card { background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 3px; padding: 2rem; margin-bottom: 1rem; }
+.card-titulo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.02em; margin-bottom: 0.2rem; line-height: 1; }
+.card-sub { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 1.75rem; }
+
+/* Form */
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+.form-group label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #888; }
+.form-group input { font-family: 'Crimson Pro', serif; font-size: 1rem; padding: 0.65rem 0.9rem; border: 1px solid rgba(0,0,0,0.12); border-radius: 2px; background: #fafafa; color: #111; outline: none; transition: border-color 0.2s; width: 100%; }
+.form-group input:focus { border-color: #b8922a; background: #fff; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+/* Botones */
+.btn-primary { width: 100%; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.9rem; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; background: rgb(241,44,44); color: #fff; font-weight: 600; margin-top: 0.5rem; }
+.btn-primary:hover:not(:disabled) { background: #c41a1a; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(241,44,44,0.3); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-secondary { width: 100%; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.9rem; border-radius: 2px; border: 1.5px solid rgba(0,0,0,0.15); cursor: pointer; transition: all 0.2s; background: transparent; color: #111; font-weight: 600; }
+.btn-secondary:hover { border-color: #111; background: #111; color: #fff; }
+
+.btn-invitado { width: 100%; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem; border-radius: 2px; border: 1px solid rgba(0,0,0,0.1); cursor: pointer; transition: all 0.2s; background: #f0f0f0; color: #666; }
+.btn-invitado:hover { background: #e5e5e5; color: #111; }
+
+/* Divisor */
+.divisor { display: flex; align-items: center; gap: 1rem; margin: 1.25rem 0; }
+.divisor-line { flex: 1; height: 1px; background: rgba(0,0,0,0.08); }
+.divisor-text { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; }
+
+/* Link */
+.link-text { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: #888; text-align: center; margin-top: 1rem; }
+.link-text a { color: #b8922a; text-decoration: none; cursor: pointer; }
+.link-text a:hover { text-decoration: underline; }
+

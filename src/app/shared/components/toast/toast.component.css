@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400&family=DM+Mono:wght@300;400&display=swap');
+
+.toast-container {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 9999;
+  pointer-events: none;
+  min-width: 220px;
+  max-width: 260px;
+}
+
+.toast {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 3px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+.toast.visible { opacity: 1; transform: translateY(0); }
+
+.toast-barra { width: 3px; border-radius: 2px; flex-shrink: 0; align-self: stretch; }
+.toast-barra.success { background: #1D9E75; }
+.toast-barra.error { background: rgb(241,44,44); }
+.toast-barra.info { background: #378ADD; }
+
+.toast-contenido { flex: 1; }
+
+.toast-titulo { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.2rem; }
+.toast-titulo.success { color: #0F6E56; }
+.toast-titulo.error { color: rgb(241,44,44); }
+.toast-titulo.info { color: #185FA5; }
+
+.toast-mensaje { font-family: 'Crimson Pro', serif; font-size: 0.85rem; color: #555; line-height: 1.4; }
+
+.toast-cerrar { font-size: 0.9rem; color: #bbb; cursor: pointer; background: none; border: none; padding: 0; line-height: 1; flex-shrink: 0; transition: color 0.2s; }
+.toast-cerrar:hover { color: #111; }
+
+.toast-progress { position: absolute; bottom: 0; left: 0; height: 2px; background: rgba(0,0,0,0.06); border-radius: 0 0 3px 3px; width: 100%; overflow: hidden; }
+.toast-progress-bar { height: 100%; width: 100%; transform-origin: left; animation: shrink 3.5s linear forwards; }
+.toast-progress-bar.success { background: #1D9E75; }
+.toast-progress-bar.error { background: rgb(241,44,44); }
+.toast-progress-bar.info { background: #378ADD; }
+
+@keyframes shrink { from { transform: scaleX(1); } to { transform: scaleX(0); } }

@@ -1,0 +1,108 @@
+<div class="confirmacion-bg">
+
+  <!-- Header -->
+  <div class="confirm-header">
+    <div class="check-circle"><span class="check-icon">✓</span></div>
+    <div class="confirm-titulo">¡Compra Exitosa!</div>
+    <div class="confirm-sub">Tu pedido ha sido confirmado · Gracias por tu compra</div>
+  </div>
+
+  <div class="ticket-wrapper">
+
+    <div class="metodo-badge">{{ getMetodoTexto() }}</div>
+
+    <div class="ticket">
+
+      <!-- Cabecera -->
+      <div class="ticket-head">
+        <div class="ticket-brand">CineGalaxy</div>
+        <div class="ticket-id">Compra <strong>#{{ compraId }}</strong></div>
+      </div>
+
+      <!-- Cuerpo -->
+      <div class="ticket-body">
+
+        <ng-container *ngIf="funcion">
+          <div class="ticket-pelicula">{{ funcion.pelicula?.titulo }}</div>
+          <div class="ticket-idioma">{{ funcion.idioma }} · 2D</div>
+
+          <div class="ticket-grid">
+            <div>
+              <div class="ticket-campo-label">Fecha</div>
+              <div class="ticket-campo-valor">{{ funcion.fecha }}</div>
+            </div>
+            <div>
+              <div class="ticket-campo-label">Hora</div>
+              <div class="ticket-campo-valor grande">{{ funcion.horaInicio }}</div>
+            </div>
+            <div>
+              <div class="ticket-campo-label">Sede</div>
+              <div class="ticket-campo-valor">{{ funcion.sala?.sede?.nombre }}</div>
+            </div>
+            <div>
+              <div class="ticket-campo-label">Sala</div>
+              <div class="ticket-campo-valor">{{ funcion.sala?.nombre }}</div>
+            </div>
+            <div *ngIf="asientos.length > 0" style="grid-column: span 2;">
+              <div class="ticket-campo-label">Asientos</div>
+              <div class="asientos-row">
+                <span class="asiento-pill" *ngFor="let a of asientos">{{ a.fila }}{{ a.numero }}</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <!-- Dulcería -->
+        <div class="ticket-dulceria" *ngIf="carrito.length > 0">
+          <div class="ticket-dulceria-titulo">Dulcería</div>
+          <div class="dulceria-item" *ngFor="let item of carrito">
+            <span class="dulceria-item-nombre">{{ item.cantidad }}× {{ item.producto.nombre }}</span>
+            <span class="dulceria-item-precio">S/ {{ (item.cantidad * item.producto.precio).toFixed(2) }}</span>
+          </div>
+        </div>
+
+        <!-- Total -->
+        <div class="ticket-total">
+          <span class="ticket-total-label">Total pagado</span>
+          <span class="ticket-total-monto">S/ {{ total.toFixed(2) }}</span>
+        </div>
+
+      </div>
+
+      <!-- Perforación -->
+      <div class="ticket-perforacion">
+        <div class="perf-circle-left"></div>
+        <div class="perf-linea"></div>
+        <div class="perf-circle-right"></div>
+      </div>
+
+      <!-- Footer QR -->
+      <div class="ticket-footer">
+        <div>
+          <div class="ticket-footer-titulo">Tu ticket digital</div>
+          <div class="ticket-footer-texto">
+            Presenta este <strong>código QR</strong> en la entrada del cine. También te lo enviamos a tu email.
+          </div>
+        </div>
+        <canvas #qrCanvas style="border-radius: 4px; border: 1px solid rgba(0,0,0,0.1);"></canvas>
+      </div>
+
+    </div>
+
+    <div class="acciones">
+      <button class="btn-descargar" (click)="descargarTicket()">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Descargar ticket
+      </button>
+      <button class="btn-inicio" (click)="irInicio()">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Volver al inicio
+      </button>
+      <button class="btn-cartelera" (click)="irCartelera()">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 4v16M17 4v16M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>
+        Ver cartelera
+      </button>
+    </div>
+
+  </div>
+</div>

@@ -1,15 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap');
+
 .navbar {
-  background-color: #6f42c1 !important; /* color lila */
-  position: sticky; /* se queda pegada al hacer scroll */
-  top: 0; /* se queda en la parte superior */
-  z-index: 1050; /* por encima de otros elementos */
+  background-color: #6f42c1 !important;
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+}
+
+.navbar-brand {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1.5rem !important;
+  letter-spacing: 0.08em;
 }
 
 .navbar .nav-link,
-.navbar .navbar-brand,
-.navbar .icon {
+.navbar .navbar-brand {
   color: white !important;
-  position: relative; /* necesario para el pseudo-elemento */
+  position: relative;
   text-decoration: none;
 }
 
@@ -17,7 +24,7 @@
   content: '';
   position: absolute;
   width: 0;
-  height: 2px; /* grosor del subrayado */
+  height: 2px;
   left: 0;
   bottom: 0;
   background-color: white;
@@ -28,12 +35,6 @@
   width: 100%;
 }
 
-.navbar .nav-link,
-.navbar .navbar-brand,
-.navbar .icon {
-  color: white !important; /* fuerza texto e iconos en blanco */
-}
-
 .logo {
   height: 50px;
 }
@@ -42,4 +43,58 @@
   width: 20px;
   height: 20px;
   vertical-align: middle;
+  color: white;
+}
+
+.nav-separador {
+  color: rgba(255,255,255,0.3);
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav-usuario {
+  color: white;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  opacity: 0.9;
+}
+
+.btn-logout {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-logout:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: white;
+}
+
+.btn-login {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 1rem !important;
+  border-radius: 20px !important;
+  border: 1.5px solid rgba(255,255,255,0.5) !important;
+  transition: all 0.2s;
+}
+
+.btn-login:hover {
+  background: rgba(255,255,255,0.15) !important;
+  border-color: white !important;
+}
+
+.btn-login::after {
+  display: none !important;
 }

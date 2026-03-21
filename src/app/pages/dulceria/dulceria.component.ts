@@ -7,6 +7,7 @@ import { CategoriaProducto } from '../../core/models/categoria-producto/categori
 import { Producto } from '../../core/models/producto/producto.model';
 import { CategoriaProductoService } from '../../core/services/categoria-producto/categoria-producto.service';
 import { ProductoService } from '../../core/services/producto/producto.service';
+import { AuthService } from '../../core/services/auth/auth.service';
 
 interface ItemCarrito {
   producto: Producto;
@@ -37,7 +38,8 @@ export class DulceriaComponent implements OnInit {
   constructor(
     private router: Router,
     private categoriaProductoService: CategoriaProductoService,
-    private productoService: ProductoService
+    private productoService: ProductoService,
+    private authService: AuthService
   ) {
     const nav = this.router.getCurrentNavigation();
     const state = nav?.extras?.state as {
@@ -112,7 +114,8 @@ export class DulceriaComponent implements OnInit {
   cerrarPanel(): void { this.panelAbierto = false; }
 
   continuar(): void {
-    this.router.navigate(['/login-invitado'], {
+    const destino = this.authService.isLogueado() ? '/pago' : '/login';
+    this.router.navigate([destino], {
       state: {
         funcion: this.funcion,
         asientos: this.asientos,

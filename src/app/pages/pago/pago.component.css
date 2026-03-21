@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@400;600&family=DM+Mono:wght@300;400&display=swap');
+
+.pago-bg { min-height: 100vh; background: #f7f7f5; font-family: 'Crimson Pro', serif; color: #111; }
+
+.breadcrumb-nav { padding: 1.25rem 2rem; display: flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid rgba(0,0,0,0.06); background: #fff; }
+.breadcrumb-item { color: #888; }
+.breadcrumb-item--active { color: #111; }
+.breadcrumb-sep { color: rgba(0,0,0,0.2); }
+
+.resumen-barra { background: #111; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.resumen-items { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+.resumen-item { display: flex; flex-direction: column; gap: 0.15rem; }
+.resumen-item-label { font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+.resumen-item-valor { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: rgba(255,255,255,0.85); }
+.resumen-total { display: flex; flex-direction: column; align-items: flex-end; gap: 0.1rem; }
+.resumen-total-label { font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+.resumen-total-monto { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: #b8922a; line-height: 1; }
+
+.page { max-width: 540px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+.page-titulo { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; letter-spacing: 0.02em; line-height: 1; margin-bottom: 0.3rem; }
+.page-sub { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 2rem; }
+
+.metodos { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+.metodo-btn { padding: 1rem 1.25rem; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 3px; background: #fff; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.75rem; }
+.metodo-btn:hover { border-color: rgba(0,0,0,0.25); }
+.metodo-btn.active { border-color: #111; box-shadow: 0 0 0 1px #111; }
+.metodo-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.metodo-icon.tarjeta { background: #f0f0f0; }
+.metodo-icon.yape { background: #111; font-family: 'DM Mono', monospace; font-weight: bold; color: white; font-size: 0.7rem; }
+.metodo-nombre { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: #111; display: block; }
+.metodo-desc { font-size: 0.82rem; color: #888; margin-top: 0.1rem; display: block; }
+
+.form-card { background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 3px; padding: 2rem; animation: fadeIn 0.25s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+.form-titulo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.02em; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+.form-titulo-badge { width: 28px; height: 28px; border-radius: 50%; background: #111; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.6rem; display: flex; align-items: center; justify-content: center; }
+
+.tarjetas-aceptadas { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+.tarjetas-label { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; margin-right: 0.25rem; }
+.tarjeta-badge { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.6rem; border: 1px solid rgba(0,0,0,0.1); border-radius: 3px; color: #888; background: #fafafa; }
+
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+.form-group label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #888; }
+.form-group input { font-family: 'DM Mono', monospace; font-size: 0.88rem; padding: 0.65rem 0.9rem; border: 1px solid rgba(0,0,0,0.12); border-radius: 2px; background: #fafafa; color: #111; outline: none; transition: border-color 0.2s; width: 100%; letter-spacing: 0.05em; }
+.form-group input:focus { border-color: #b8922a; background: #fff; }
+.form-group input::placeholder { color: #bbb; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+.yape-container { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding: 0.5rem 0; }
+.yape-header { display: flex; align-items: center; gap: 0.75rem; width: 100%; }
+.yape-logo { width: 48px; height: 48px; background: #111; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: bold; color: white; flex-shrink: 0; }
+.yape-info-text { font-size: 0.95rem; color: #555; line-height: 1.5; }
+.yape-info-text strong { color: #111; }
+canvas { border-radius: 8px; border: 2px solid rgba(0,0,0,0.08); }
+.yape-instrucciones { width: 100%; }
+.instruccion { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.instruccion:last-child { border-bottom: none; }
+.instruccion-num { width: 22px; height: 22px; border-radius: 50%; background: #111; color: #fff; font-family: 'DM Mono', monospace; font-size: 0.6rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; }
+.instruccion-text { font-size: 0.9rem; color: #555; line-height: 1.4; }
+.instruccion-text strong { color: #111; }
+
+.btn-pagar { width: 100%; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 1rem; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; background: rgb(241,44,44); color: #fff; font-weight: 600; margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+.btn-pagar:hover:not(:disabled) { background: #c41a1a; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(241,44,44,0.3); }
+.btn-pagar:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.seguro-text { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; text-align: center; margin-top: 0.75rem; }
+
+.error-msg { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; color: rgb(241,44,44); margin-top: 0.75rem; padding: 0.6rem 0.9rem; background: rgba(241,44,44,0.05); border-left: 2px solid rgb(241,44,44); }

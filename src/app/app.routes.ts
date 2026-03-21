@@ -7,16 +7,26 @@ import { PeliculaDetalleComponent } from './pages/pelicula-detalle/pelicula-deta
 import { SeleccionFuncionComponent } from './pages/seleccion-funcion/seleccion-funcion.component';
 import { SeleccionAsientosComponent } from './pages/seleccion-asientos/seleccion-asientos.component';
 import { TipoEntradaComponent } from './pages/tipo-entrada/tipo-entrada.component';
+import { LoginComponent } from './pages/login/login.component';
+import { PagoComponent } from './pages/pago/pago.component';
+import { ConfirmacionComponent } from './pages/confirmacion/confirmacion.component';
+import { QuienesSomosComponent } from './pages/quienes-somos/quienes-somos.component';
+import { authGuard } from './core/guards/auth.guard';
 export const routes: Routes = [
 
-     { path: '', component: InicioComponent },
+     { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+     { path: 'inicio', component: InicioComponent },
      { path: 'sala', component: SalaComponent },
      { path: 'cartelera', component: CarteleraComponent },
      { path: 'dulceria', component: DulceriaComponent },
      { path: 'pelicula/:id', component: PeliculaDetalleComponent },
      { path: 'seleccion-funcion/:id', component: SeleccionFuncionComponent },
      { path: 'seleccion-asientos/:id', component: SeleccionAsientosComponent },
-     { path: 'tipo-entrada', component: TipoEntradaComponent }
+     { path: 'tipo-entrada', component: TipoEntradaComponent },
+     { path: 'login', component: LoginComponent },
+     { path: 'pago', component: PagoComponent },
+     { path: 'confirmacion', component: ConfirmacionComponent },
+     { path: 'quienes-somos', component: QuienesSomosComponent }
 
 
 ];

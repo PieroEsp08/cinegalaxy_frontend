@@ -1,0 +1,144 @@
+<div class="pago-bg">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb-nav">
+    <span class="breadcrumb-item">Acceso</span>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-item breadcrumb-item--active">Pago</span>
+  </nav>
+
+  <!-- Barra resumen -->
+  <div class="resumen-barra" *ngIf="funcion">
+    <div class="resumen-items">
+      <div class="resumen-item">
+        <span class="resumen-item-label">Película</span>
+        <span class="resumen-item-valor">{{ funcion.pelicula?.titulo }}</span>
+      </div>
+      <div class="resumen-item">
+        <span class="resumen-item-label">Función</span>
+        <span class="resumen-item-valor">{{ funcion.fecha }} · {{ funcion.horaInicio }}</span>
+      </div>
+      <div class="resumen-item" *ngIf="asientos.length > 0">
+        <span class="resumen-item-label">Asientos</span>
+        <span class="resumen-item-valor">{{ getAsientosTexto() }}</span>
+      </div>
+      <div class="resumen-item" *ngIf="carrito.length > 0">
+        <span class="resumen-item-label">Dulcería</span>
+        <span class="resumen-item-valor">{{ carrito.length }} producto(s)</span>
+      </div>
+    </div>
+    <div class="resumen-total">
+      <span class="resumen-total-label">Total</span>
+      <span class="resumen-total-monto">S/ {{ total.toFixed(2) }}</span>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="page-titulo">Confirmar Pago</div>
+    <div class="page-sub">Elige tu método de pago y completa la compra</div>
+
+    <!-- Métodos -->
+    <div class="metodos">
+      <button class="metodo-btn" [class.active]="metodo === 'tarjeta'" (click)="setMetodo('tarjeta')">
+        <div class="metodo-icon tarjeta">💳</div>
+        <div>
+          <span class="metodo-nombre">Tarjeta</span>
+          <span class="metodo-desc">Crédito o débito</span>
+        </div>
+      </button>
+      <button class="metodo-btn" [class.active]="metodo === 'yape'" (click)="setMetodo('yape')">
+        <div class="metodo-icon yape">QR</div>
+        <div>
+          <span class="metodo-nombre">Yape / Plin</span>
+          <span class="metodo-desc">Pago con QR</span>
+        </div>
+      </button>
+    </div>
+
+    <!-- TARJETA -->
+    <div class="form-card" *ngIf="metodo === 'tarjeta'">
+      <div class="form-titulo">
+        <div class="form-titulo-badge">💳</div>
+        Datos de la tarjeta
+      </div>
+
+      <div class="tarjetas-aceptadas">
+        <span class="tarjetas-label">Acepta:</span>
+        <span class="tarjeta-badge">Visa</span>
+        <span class="tarjeta-badge">Mastercard</span>
+      </div>
+
+      <form [formGroup]="tarjetaForm" (ngSubmit)="pagarConTarjeta()">
+        <div class="form-group">
+          <label>Número de tarjeta</label>
+          <input type="text" formControlName="numero" placeholder="1234 5678 9012 3456" maxlength="19" (input)="formatCard($event)">
+        </div>
+        <div class="form-group">
+          <label>Nombre del titular</label>
+          <input type="text" formControlName="nombre" placeholder="JUAN PÉREZ">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Vencimiento</label>
+            <input type="text" formControlName="vencimiento" placeholder="MM/AA" maxlength="5">
+          </div>
+          <div class="form-group">
+            <label>CVV</label>
+            <input type="password" formControlName="cvv" placeholder="•••" maxlength="4">
+          </div>
+        </div>
+
+        <button class="btn-pagar" type="submit" [disabled]="cargando || tarjetaForm.invalid">
+          {{ cargando ? 'Procesando...' : '🔒 Pagar S/ ' + total.toFixed(2) }}
+        </button>
+      </form>
+      <div class="error-msg" *ngIf="error">{{ error }}</div>
+      <div class="seguro-text">🔒 Pago seguro y encriptado</div>
+    </div>
+
+    <!-- YAPE -->
+    <div class="form-card" *ngIf="metodo === 'yape'">
+      <div class="form-titulo">
+        <div class="form-titulo-badge">QR</div>
+        Pagar con Yape / Plin
+      </div>
+
+      <div class="yape-container">
+        <div class="yape-header">
+          <div class="yape-logo">QR</div>
+          <div class="yape-info-text">
+            Escanea el código con tu app de <strong>Yape o Plin</strong> para pagar <strong>S/ {{ total.toFixed(2) }}</strong>
+          </div>
+        </div>
+
+        <canvas #qrCanvas></canvas>
+
+        <div class="yape-instrucciones">
+          <div class="instruccion">
+            <div class="instruccion-num">1</div>
+            <div class="instruccion-text">Abre tu app de <strong>Yape o Plin</strong></div>
+          </div>
+          <div class="instruccion">
+            <div class="instruccion-num">2</div>
+            <div class="instruccion-text">Toca <strong>"Escanear QR"</strong> y apunta al código</div>
+          </div>
+          <div class="instruccion">
+            <div class="instruccion-num">3</div>
+            <div class="instruccion-text">Confirma el pago de <strong>S/ {{ total.toFixed(2) }}</strong></div>
+          </div>
+          <div class="instruccion">
+            <div class="instruccion-num">4</div>
+            <div class="instruccion-text">Espera la confirmación automática</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-pagar" (click)="pagarConYape()" [disabled]="cargando">
+        {{ cargando ? 'Verificando...' : '🔒 Ya realicé el pago' }}
+      </button>
+      <div class="error-msg" *ngIf="error">{{ error }}</div>
+      <div class="seguro-text">🔒 Pago seguro y encriptado</div>
+    </div>
+
+  </div>
+</div>

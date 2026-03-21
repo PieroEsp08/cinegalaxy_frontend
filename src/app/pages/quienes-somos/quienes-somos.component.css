@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap');
+
+.qs-bg { font-family: 'Crimson Pro', serif; color: #111; overflow-x: hidden; }
+
+/* HERO */
+.hero { background: #111; padding: 5rem 4rem; }
+.hero-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+.hero-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: rgb(241,44,44); flex-shrink: 0; }
+.hero-titulo { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 8vw, 6rem); letter-spacing: 0.02em; line-height: 0.9; color: #fff; margin-bottom: 1.5rem; max-width: 700px; }
+.hero-acento { color: rgb(241,44,44); }
+.hero-desc { font-size: 1.1rem; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 480px; border-left: 2px solid rgba(241,44,44,0.4); padding-left: 1.25rem; }
+
+/* STATS */
+.stats { background: rgb(241,44,44); padding: 4rem; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto; }
+.stat { padding-left: 1.25rem; border-left: 2px solid rgba(255,255,255,0.2); }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: #fff; line-height: 1; display: block; }
+.stat-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
+
+/* HISTORIA */
+.historia { background: #f7f7f5; padding: 6rem 4rem; }
+.historia-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+.historia-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgb(241,44,44); margin-bottom: 0.75rem; }
+.historia-titulo { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; line-height: 1; margin-bottom: 1.5rem; }
+.historia-texto { font-size: 1.05rem; color: #666; line-height: 1.8; }
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, rgb(241,44,44), rgba(241,44,44,0.1)); }
+.timeline-item { position: relative; padding-bottom: 2rem; }
+.timeline-item::before { content: ''; position: absolute; left: -2.4rem; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: rgb(241,44,44); border: 2px solid #f7f7f5; box-shadow: 0 0 0 2px rgb(241,44,44); }
+.timeline-anno { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(241,44,44); margin-bottom: 0.3rem; }
+.timeline-texto { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: #555; line-height: 1.5; }
+
+/* VALORES */
+.valores { background: #111; padding: 6rem 4rem; }
+.valores-inner { max-width: 1100px; margin: 0 auto; }
+.valores-tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgb(241,44,44); margin-bottom: 0.5rem; }
+.valores-titulo { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: #fff; line-height: 1; margin-bottom: 2.5rem; }
+.valores-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.valor { background: #222; border-radius: 3px; padding: 2rem; transition: transform 0.2s; }
+.valor:hover { transform: translateY(-3px); }
+.valor-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: rgb(241,44,44); line-height: 1; margin-bottom: -0.4rem; }
+.valor-acento { display: block; width: 20px; height: 2px; background: rgb(241,44,44); margin-bottom: 0.75rem; }
+.valor-titulo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: #fff; margin-bottom: 0.75rem; }
+.valor-texto { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.7; }
+
+/* CTA */
+.cta { background: rgb(241,44,44); padding: 5rem 4rem; text-align: center; }
+.cta-titulo { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; line-height: 1; color: #fff; margin-bottom: 0.5rem; }
+.cta-sub { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
+.cta-btn { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.9rem 2.5rem; border-radius: 2px; border: 2px solid rgba(255,255,255,0.5); cursor: pointer; background: transparent; color: #fff; transition: all 0.2s; }
+.cta-btn:hover { background: #fff; color: rgb(241,44,44); }
+
+@media (max-width: 768px) {
+  .hero, .stats, .historia, .valores, .cta { padding: 4rem 2rem; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .historia-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .valores-grid { grid-template-columns: 1fr; }
+}

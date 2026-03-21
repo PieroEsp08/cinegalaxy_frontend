@@ -1,0 +1,15 @@
+<div class="toast-container">
+  <div class="toast"
+       [class.visible]="toast.visible"
+       *ngFor="let toast of toasts">
+    <div class="toast-barra" [ngClass]="toast.tipo"></div>
+    <div class="toast-contenido">
+      <div class="toast-titulo" [ngClass]="toast.tipo">{{ toast.titulo }}</div>
+      <div class="toast-mensaje">{{ toast.mensaje }}</div>
+    </div>
+    <button class="toast-cerrar" (click)="removeToast(toast.id)">×</button>
+    <div class="toast-progress">
+      <div class="toast-progress-bar" [ngClass]="toast.tipo" *ngIf="toast.visible"></div>
+    </div>
+  </div>
+</div>

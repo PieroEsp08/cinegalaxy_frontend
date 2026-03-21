@@ -1,0 +1,122 @@
+<div class="login-bg">
+
+  <!-- Breadcrumb solo en modo compra -->
+  <nav class="breadcrumb-nav" *ngIf="modoCompra">
+    <span class="breadcrumb-item">Dulcería</span>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-item breadcrumb-item--active">Acceso</span>
+  </nav>
+
+  <div class="page">
+
+    <!-- VISTA: LOGIN -->
+    <div class="vista" *ngIf="vista === 'login'">
+      <div class="card">
+        <div class="card-titulo">Bienvenido</div>
+        <div class="card-sub">Ingresa a tu cuenta para continuar</div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" formControlName="email" placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" formControlName="password" placeholder="••••••••">
+          </div>
+
+          <button class="btn-primary" type="submit" [disabled]="cargando">
+            {{ cargando ? 'Ingresando...' : 'Ingresar →' }}
+          </button>
+        </form>
+
+        <div class="link-text">¿Olvidaste tu contraseña? <a>Recupérala aquí</a></div>
+      </div>
+
+      <div class="card">
+        <button class="btn-secondary" (click)="irA('registro')">Crear cuenta nueva →</button>
+        <div class="link-text">¿Aún no tienes cuenta? Regístrate gratis</div>
+      </div>
+
+      <ng-container *ngIf="modoCompra">
+        <div class="divisor">
+          <div class="divisor-line"></div>
+          <div class="divisor-text">o</div>
+          <div class="divisor-line"></div>
+        </div>
+        <button class="btn-invitado" (click)="irA('invitado')">Continuar como invitado</button>
+      </ng-container>
+    </div>
+
+    <!-- VISTA: REGISTRO -->
+    <div class="vista" *ngIf="vista === 'registro'">
+      <div class="card">
+        <div class="card-titulo">Crear Cuenta</div>
+        <div class="card-sub">Regístrate y continúa</div>
+
+        <form [formGroup]="registroForm" (ngSubmit)="registro()">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" formControlName="nombre" placeholder="Juan">
+            </div>
+            <div class="form-group">
+              <label>Apellido</label>
+              <input type="text" formControlName="apellido" placeholder="Pérez">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" formControlName="email" placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" formControlName="telefono" placeholder="999 888 777">
+          </div>
+          <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" formControlName="password" placeholder="••••••••">
+          </div>
+          <div class="form-group">
+            <label>Confirmar contraseña</label>
+            <input type="password" formControlName="confirmarPassword" placeholder="••••••••">
+          </div>
+
+          <button class="btn-primary" type="submit" [disabled]="cargando">
+            {{ cargando ? 'Registrando...' : 'Registrarme →' }}
+          </button>
+        </form>
+
+        <div class="link-text">¿Ya tienes cuenta? <a (click)="irA('login')">Inicia sesión</a></div>
+      </div>
+    </div>
+
+    <!-- VISTA: INVITADO (solo modo compra) -->
+    <div class="vista" *ngIf="vista === 'invitado' && modoCompra">
+      <div class="card">
+        <div class="card-titulo">Continuar</div>
+        <div class="card-sub">Sin crear cuenta · Ticket por email</div>
+
+        <form [formGroup]="invitadoForm" (ngSubmit)="continuarInvitado()">
+          <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" formControlName="nombre" placeholder="Juan Pérez">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" formControlName="email" placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" formControlName="telefono" placeholder="999 888 777">
+          </div>
+
+          <button class="btn-primary" type="submit" [disabled]="cargando">Continuar →</button>
+        </form>
+
+        <div class="link-text"><a (click)="irA('login')">← Volver</a></div>
+      </div>
+    </div>
+
+  </div>
+</div>
