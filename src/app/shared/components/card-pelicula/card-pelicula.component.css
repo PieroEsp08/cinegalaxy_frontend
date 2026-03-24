@@ -1,135 +1,108 @@
-/* Card principal */
 .pelicula-card {
-  width: 100%;           /* que se adapte al ancho de la columna */
+  width: 100%;
   max-width: 250px;
-  border-radius: 10px;
+  margin: 0 auto;
+  border-radius: 3px;
   overflow: hidden;
   background-color: #111;
   color: #fff;
-  margin: 0 auto;        /* centrado si sobra espacio */
   position: relative;
   cursor: pointer;
   transition: transform 0.3s;
 }
 
-.pelicula-card:hover {
-  transform: scale(1.05);
-  z-index: 10;
-}
+.pelicula-card:hover { transform: scale(1.03); z-index: 10; }
 
-/* Imagen */
 .imagen-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 2/3; 
-  height: auto;
+  aspect-ratio: 2/3;
   overflow: hidden;
 }
 
 .imagen-container img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.5s, filter 0.5s;
 }
 
-/* Zoom y oscurecer imagen al hover */
 .pelicula-card:hover .imagen-container img {
   transform: scale(1.1);
-  filter: brightness(50%);
+  filter: brightness(45%);
 }
 
-/* Badge de estreno */
 .badge-estreno {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: #e50914;
+  top: 0.6rem; left: 0.6rem;
+  background: rgb(241,44,44);
   color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   z-index: 5;
 }
 
-/* Contenido overlay */
 .contenido {
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0));
+  bottom: 0; width: 100%;
+  padding: 1.25rem 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-.pelicula-card:hover .contenido {
-  opacity: 1;
-}
+.pelicula-card:hover .contenido { opacity: 1; }
 
-/* Título */
 .contenido h3 {
-  margin: 0 0 5px 0;
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.4rem;
 }
 
-/* Info de duración y género */
 .info {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  font-size: 0.8rem;
+  gap: 2px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 0.75rem;
 }
 
-/* Botones overlay */
-.contenido .botones {
-  display: flex;
-  gap: 10px;
-  margin-top: 8px;
-}
+.botones { display: flex; gap: 0.5rem; }
 
-.contenido .botones button {
+.botones button {
   flex: 1;
-  padding: 6px 8px;
+  padding: 0.45rem 0.5rem;
   border: none;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  font-weight: bold;
+  border-radius: 2px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
 }
 
-/* Botón Comprar */
-.contenido .botones .comprar {
-  background-color: #e50914;
-  color: white;
+.comprar { background: rgb(241,44,44); color: white; }
+.comprar:hover { background: #c41a1a; }
+
+.detalles { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+.detalles:hover { background: rgba(255,255,255,0.25); }
+
+.botones svg { width: 14px; height: 14px; fill: currentColor; }
+
+@media (max-width: 480px) {
+  .botones { flex-direction: column; gap: 0.4rem; }
+  .botones button { font-size: 0.55rem; padding: 0.4rem; }
 }
-
-.contenido .botones .comprar:hover {
-  background-color: #ff1a2e;
-  transform: scale(1.05);
-}
-
-/* Botón Ver Detalles */
-.contenido .botones .detalles {
-  background-color: rgba(255,255,255,0.8);
-  color: #111;
-}
-
-.contenido .botones .detalles:hover {
-  background-color: rgba(255,255,255,1);
-  transform: scale(1.05);
-}
-
-.contenido .botones svg {
-  fill: currentColor;
-  width: 16px;
-  height: 16px;
-   margin-bottom: 2.5px; 
-}
-
-

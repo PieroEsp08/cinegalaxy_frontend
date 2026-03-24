@@ -1,17 +1,15 @@
-<h2 class="titulo-peliculas text-center my-4">Cartelera</h2>
+<section class="cartelera">
+  <div class="seccion-header">
+    <div>
+      <div class="seccion-tag">En cines ahora</div>
+      <div class="seccion-titulo">Cartelera</div>
+    </div>
+    <button class="seccion-link" (click)="irACartelera()">Ver toda la cartelera →</button>
+  </div>
 
-<div class="container">
-  <div class="row">
-    <div 
-      class="col-6 col-md-4 col-lg-3 mb-4"
-      *ngFor="let pelicula of peliculas | slice:0:8">
-      
+  <div class="peliculas-grid">
+    <div *ngFor="let pelicula of peliculas | slice:0:8">
       <app-card-pelicula [pelicula]="pelicula"></app-card-pelicula>
     </div>
   </div>
-
-  <div class="ver-mas-container">
-    <button class="ver-mas-btn" (click)="irACartelera()">Ver más</button>
-  </div>
-
-</div>
+</section>

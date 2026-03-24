@@ -1,26 +1,87 @@
-<div id="carouselInicio" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="assets/images/cine_banner.png" class="d-block w-100" alt="Banner 1">
-    </div>
-    <div class="carousel-item ">
-      <img src="assets/images/joker_banner.png" class="d-block w-100" alt="Banner 3">
-    </div>
-    <div class="carousel-item ">
-      <img src="assets/images/deadpool_banner.png" class="d-block w-100" alt="Banner 1">
-    </div>
-    <div class="carousel-item ">
-      <img src="assets/images/whiplash_banner.png" class="d-block w-100" alt="Banner 2">
-    </div>
-    <div class="carousel-item ">
-      <img src="assets/images/db_banner.png" class="d-block w-100" alt="Banner 2">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselInicio" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselInicio" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div>
+<section class="hero">
+  <div class="hero-slides" [style.transform]="'translateX(-' + slideActual * 100 + '%)'">
 
+    <!-- Slide 1: Cine Banner -->
+    <div class="hero-slide">
+      <img src="assets/images/cine_banner.png" class="hero-slide-img" alt="CineGalaxy">
+      <div class="hero-content">
+        <div class="hero-badge">Bienvenido</div>
+        <div class="hero-titulo">Cine<br>Galaxy</div>
+        <div class="hero-desc">La mejor experiencia cinematográfica de Lima. Cinco sedes, más de 40 salas y el mejor sonido.</div>
+        <div class="hero-btns">
+          <button class="hero-btn-primary" routerLink="/cartelera">Ver cartelera →</button>
+          <button class="hero-btn-ghost" routerLink="/quienes-somos">Quiénes somos</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Deadpool & Wolverine -->
+    <div class="hero-slide">
+      <img src="assets/images/deadpool_banner.png" class="hero-slide-img" alt="Deadpool & Wolverine">
+      <div class="hero-content">
+        <div class="hero-badge">Estreno</div>
+        <div class="hero-titulo">Deadpool</div>
+        <div class="hero-desc">El mercenario bocazas se une al feroz mutante en una aventura multiversal sin precedentes.</div>
+        <div class="hero-btns">
+          <button class="hero-btn-primary" routerLink="/cartelera">Comprar entradas →</button>
+          <button class="hero-btn-ghost" routerLink="/cartelera">Ver más</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Joker -->
+    <div class="hero-slide">
+      <img src="assets/images/joker_banner.png" class="hero-slide-img" alt="Joker">
+      <div class="hero-content">
+        <div class="hero-badge">Ahora en cartelera</div>
+        <div class="hero-titulo">Joker</div>
+        <div class="hero-desc">La historia de Arthur Fleck, un hombre ignorado por la sociedad que desciende a la locura y se convierte en el Joker.</div>
+        <div class="hero-btns">
+          <button class="hero-btn-primary" routerLink="/cartelera">Comprar entradas →</button>
+          <button class="hero-btn-ghost" routerLink="/cartelera">Ver más</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Whiplash -->
+    <div class="hero-slide">
+      <img src="assets/images/whiplash_banner.png" class="hero-slide-img" alt="Whiplash">
+      <div class="hero-content">
+        <div class="hero-badge">Clásico moderno</div>
+        <div class="hero-titulo">Whiplash</div>
+        <div class="hero-desc">Un joven baterista obsesionado con la perfección enfrenta al instructor más exigente del mundo.</div>
+        <div class="hero-btns">
+          <button class="hero-btn-primary" routerLink="/cartelera">Comprar entradas →</button>
+          <button class="hero-btn-ghost" routerLink="/cartelera">Ver más</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: Dragon Ball Super: Broly -->
+    <div class="hero-slide">
+      <img src="assets/images/db_banner.png" class="hero-slide-img" alt="Dragon Ball Super: Broly">
+      <div class="hero-content">
+        <div class="hero-badge">Acción</div>
+        <div class="hero-titulo">Dragon Ball<br>Super: Broly</div>
+        <div class="hero-desc">Goku y Vegeta se enfrentan a Broly, el guerrero Saiyan más poderoso jamás visto, en una batalla épica.</div>
+        <div class="hero-btns">
+          <button class="hero-btn-primary" routerLink="/cartelera">Comprar entradas →</button>
+          <button class="hero-btn-ghost" routerLink="/cartelera">Ver más</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Flechas -->
+  <button class="hero-arrow hero-arrow-prev" (click)="cambiarSlide(-1)">‹</button>
+  <button class="hero-arrow hero-arrow-next" (click)="cambiarSlide(1)">›</button>
+
+  <!-- Indicadores -->
+  <div class="hero-indicators">
+    <div class="hero-dot" *ngFor="let s of slides; let i = index"
+         [class.active]="i === slideActual"
+         (click)="irSlide(i)"></div>
+  </div>
+
+</section>

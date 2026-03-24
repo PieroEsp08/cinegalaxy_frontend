@@ -1,8 +1,11 @@
-
-  <h2 class="titulo-productos">Nuestros Productos</h2>
-
-  <div class="productos-carrusel my-5">
-    <div class="container">
-      <app-carrusel-productos [productos]="productos"></app-carrusel-productos>
+<section class="productos">
+  <div class="seccion-header">
+    <div>
+      <div class="seccion-tag">Antes de entrar</div>
+      <div class="seccion-titulo">Dulcería</div>
     </div>
+    <button class="seccion-link" routerLink="/dulceria">Ver todo →</button>
   </div>
+
+  <app-carrusel-productos [productos]="productos"></app-carrusel-productos>
+</section>

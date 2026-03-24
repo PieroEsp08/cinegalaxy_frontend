@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap');
+
+.cta {
+  background: rgb(241,44,44);
+  padding: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-bg-text {
+  position: absolute;
+  right: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14rem;
+  color: rgba(255,255,255,0.06);
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+.cta-titulo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  color: #fff;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.cta-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+.cta-stats {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  border-left: 2px solid rgba(255,255,255,0.3);
+  padding-left: 1rem;
+}
+
+.cta-stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: #fff;
+  line-height: 1;
+}
+
+.cta-stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+.cta-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.8rem 1.75rem;
+  border-radius: 2px;
+  border: 2px solid rgba(255,255,255,0.4);
+  cursor: pointer;
+  background: transparent;
+  color: #fff;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.cta-btn:hover {
+  background: #fff;
+  color: rgb(241,44,44);
+  border-color: #fff;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .cta { padding: 3rem 2rem; }
+  .cta-bg-text { font-size: 8rem; }
+  .cta-inner { flex-direction: column; align-items: flex-start; }
+}

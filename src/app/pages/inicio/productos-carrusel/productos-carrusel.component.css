@@ -1,6 +1,57 @@
-.titulo-productos {
-  font-size: 3.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: darkgray;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap');
+
+.productos {
+  padding: 5rem 4rem;
+  
+  background: #f7f7f5;
+}
+
+.seccion-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.seccion-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgb(241,44,44);
+  margin-bottom: 0.4rem;
+}
+
+.seccion-titulo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: #111;
+}
+
+.seccion-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.seccion-link:hover { color: rgb(241,44,44); }
+
+@media (max-width: 768px) {
+  .productos { padding: 4rem 2rem; }
+}
+
+@media (max-width: 480px) {
+  .carrusel-outer { max-width: 100%; }
+  .producto-card { width: calc(100vw - 8rem); }
 }

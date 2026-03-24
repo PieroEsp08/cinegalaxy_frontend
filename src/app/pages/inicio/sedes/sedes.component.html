@@ -1,0 +1,19 @@
+<section class="sedes">
+  <div class="seccion-header">
+    <div>
+      <div class="seccion-tag">Encuéntranos</div>
+      <div class="seccion-titulo">Nuestras Sedes</div>
+    </div>
+  </div>
+
+  <div class="sedes-grid">
+    <div class="sede-card" *ngFor="let sede of sedes; let i = index">
+      <img [src]="sede.imagen" [alt]="sede.nombre" class="sede-img">
+      <div class="sede-overlay">
+        <div class="sede-nombre">{{ sede.nombre }}</div>
+        <div class="sede-detalle">{{ sede.direccion }}</div>
+        <button class="sede-btn">Ver funciones →</button>
+      </div>
+    </div>
+  </div>
+</section>
