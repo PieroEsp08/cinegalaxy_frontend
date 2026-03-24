@@ -8,7 +8,7 @@ import { Pelicula } from '../../models/pelicula/pelicula.model';
 })
 export class PeliculaService {
 
-  private apiUrl = 'http://localhost:8080/api/peliculas'; 
+  private apiUrl = 'https://localhost:8443/api/peliculas'; 
 
   constructor(private http: HttpClient) {}
 

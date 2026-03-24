@@ -8,7 +8,7 @@ import { CategoriaProducto } from '../../models/categoria-producto/categoriaProd
 })
 export class CategoriaProductoService {
 
-  private apiUrl = 'http://localhost:8080/api/categorias-producto';
+  private apiUrl = 'https://localhost:8443/api/categorias-producto';
 
   constructor(private http: HttpClient) { }
 

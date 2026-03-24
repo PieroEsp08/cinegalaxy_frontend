@@ -8,7 +8,7 @@ import { TipoEntrada } from '../../models/tipo-entrada/tipo-entrada.model';
 })
 export class TipoEntradaService {
 
-  private apiUrl = 'http://localhost:8080/api/tipos-entrada';
+  private apiUrl = 'https://localhost:8443/api/tipos-entrada';
 
   constructor(private http: HttpClient) { }
 

@@ -8,7 +8,7 @@ import { Funcion } from '../../models/funcion/funcion.model';
 })
 export class FuncionService {
 
-  private apiUrl = 'http://localhost:8080/api/funciones';
+  private apiUrl = 'https://localhost:8443/api/funciones';
 
   constructor(private http: HttpClient) { }
 

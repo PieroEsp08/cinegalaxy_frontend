@@ -8,7 +8,7 @@ import { Sala } from '../../models/sala/sala.model';
 })
 export class SalaService {
 
-  private apiUrl = 'http://localhost:8080/api/salas';
+  private apiUrl = 'https://localhost:8443/api/salas';
 
   constructor(private http: HttpClient) { }
 

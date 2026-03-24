@@ -25,7 +25,7 @@ export interface CompraResponse {
 })
 export class CompraService {
 
-  private apiUrl = 'http://localhost:8080/api/compras';
+  private apiUrl = 'https://localhost:8443/api/compras';
 
   constructor(private http: HttpClient) {}
 

@@ -8,7 +8,7 @@ import { Sede } from '../../models/sede/sede.model';
 })
 export class SedeService {
 
-  private apiUrl = 'http://localhost:8080/api/sedes';
+  private apiUrl = 'https://localhost:8443/api/sedes';
 
   constructor(private http: HttpClient) { }
 

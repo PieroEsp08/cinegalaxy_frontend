@@ -8,7 +8,7 @@ import { Asiento } from '../../models/asiento/asiento.model';
 })
 export class AsientoService {
 
-  private apiUrl = 'http://localhost:8080/api/asientos';
+  private apiUrl = 'https://localhost:8443/api/asientos';
 
   constructor(private http: HttpClient) { }
 

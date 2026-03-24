@@ -28,7 +28,7 @@ export interface AuthResponse {
 })
 export class AuthService {
  
-  private apiUrl = 'http://localhost:8080/api/auth';
+  private apiUrl = 'https://localhost:8443/api/auth';
   private TOKEN_KEY = 'cg_token';
   private USER_KEY = 'cg_user';
  
